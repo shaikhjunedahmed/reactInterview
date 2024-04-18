@@ -8,10 +8,7 @@ const SampleParentComponent = () => {
   const [disabled, setdisabled] = useState(true);
 
   const handleInputChange = (value) => {
-    console.log("vaklue",value)
     setInputValue(value);
-    // setIsChecked(!isChecked)
-    // setdisabled(!disabled)
   };
 
   const handleSelectChange = (value) => {
