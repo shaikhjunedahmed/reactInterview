@@ -1,5 +1,5 @@
 import React from "react";
-import '../App.css';
+import "../App.css";
 const InputComponent = ({
   inputType,
   customChangeFunction,
@@ -20,18 +20,17 @@ const InputComponent = ({
   const handleChange = (e) => {
     if (onChange) {
       onChange(e.target.value);
+    } else if (customChangeFunction) {
+      customChangeFunction(e.target.value);
     }
-    else if(customChangeFunction){
-        customChangeFunction(e.target.value)
-}
   };
 
   const renderInput = () => {
     switch (inputType) {
-      case 'text':
-      case 'number':
-      case 'password':
-      case 'currency':
+      case "text":
+      case "number":
+      case "password":
+      case "currency":
         return (
           <input
             type={inputType}
@@ -44,27 +43,27 @@ const InputComponent = ({
             minLength={minLength}
           />
         );
-      case 'select':
+      case "select":
         return (
           <select
-          className="custom-input"
+            className="custom-input"
             style={inputStyle}
             value={value}
             onChange={handleChange}
             disabled={disabled}
           >
             {options.map((opt) => (
-              <option key={opt.value} value={opt.value} >
+              <option key={opt.value} value={opt.value}>
                 {opt.value}
               </option>
             ))}
           </select>
         );
-      case 'radio':
+      case "radio":
         return (
           <div>
             {options.map((opt) => (
-                <label key={opt.value} style={labelStyle}>
+              <label key={opt.value} style={labelStyle}>
                 <input
                   type="radio"
                   value={opt.value}
@@ -77,10 +76,10 @@ const InputComponent = ({
             ))}
           </div>
         );
-      case 'checkbox':
+      case "checkbox":
         return (
           <input
-          className="custom-input"
+            className="custom-input"
             type="checkbox"
             style={inputStyle}
             checked={valueischeck}
@@ -95,9 +94,11 @@ const InputComponent = ({
 
   return (
     <div>
-      <label className="custom-label" style={labelStyle}>{inputTitle}</label>
+      <label className="custom-label" style={labelStyle}>
+        {inputTitle}
+      </label>
       {renderInput()}
-      {error && <span style={{ color: 'red' }}>{errorMessage}</span>}
+      {error && <span style={{ color: "red" }}>{errorMessage}</span>}
     </div>
   );
 };
